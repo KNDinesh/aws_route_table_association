@@ -8,12 +8,14 @@ variable "private_subnet_ids" {
   type        = list(string)
 }
 
-variable "public_route_table_id" {
+variable "public_route_table" {
   description = "The ID of the public route table"
   type        = string
+  default     = "rtb-0223e16efce4c5ccc"
 }
 
-variable "private_route_table_id" {
+variable "private_route_table" {
   description = "The ID of the private route table"
   type        = string
+  default     = "rtb-073577ea5d0c05731"
 }
