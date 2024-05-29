@@ -8,3 +8,7 @@ variable "subnets" {
     environment = string
   }))
 }
+
+variable "route_table_id" {
+  type = string
+}
