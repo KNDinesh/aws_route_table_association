@@ -1,14 +1,11 @@
 # route table association
-resource "aws_route_table_association" "public_subnet_associations" {
-  for_each = toset(var.public_subnet_ids)
+resource "aws_route_table_association" "subnet_associations" {
+  for_each = var.subnets
 
-  subnet_id      = each.value
-  route_table_id = var.public_route_table
-}
+  subnet_id       = module.subnets.public_subnet_ids[Zing.Public-Infra-2A].id
+  route_table_id  = module.route_table.route_table_id
 
-resource "aws_route_table_association" "private_subnet_associations" {
-  for_each = toset(var.private_subnet_ids)
-
-  subnet_id      = each.value
-  route_table_id = var.private_route_table
+  depends_on = [
+    module.subnets,
+  ]
 }
